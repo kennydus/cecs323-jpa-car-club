@@ -1,5 +1,3 @@
-# Ignore changes to the persistence.xml file
-src/main/resources/META-INF/persistence.xml
 
 #
 # Project specific excludes
