@@ -18,27 +18,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
  * A simple application to demonstrate how to persist an object in JPA.
- *
+ * <p>
  * This is for demonstration and educational purposes only.
  */
-public class Homework4Application {
+public class StarterApplication {
    private EntityManager entityManager;
 
-   private static final Logger LOGGER = Logger.getLogger(Homework4Application.class.getName());
+   private static final Logger LOGGER = Logger.getLogger(StarterApplication.class.getName());
 
-   public Homework4Application(EntityManager manager) {
+   public StarterApplication(EntityManager manager) {
       this.entityManager = manager;
    }
 
    public static void main(String[] args) {
       LOGGER.fine("Creating EntityManagerFactory and EntityManager");
-      EntityManagerFactory factory = Persistence.createEntityManagerFactory("homework4_PU");
+      EntityManagerFactory factory = Persistence.createEntityManagerFactory("starter_unit");
       EntityManager manager = factory.createEntityManager();
-      Homework4Application hw4application = new Homework4Application(manager);
+      StarterApplication hw4application = new StarterApplication(manager);
 
 
       // Any changes to the database need to be done within a transaction.
@@ -62,13 +64,28 @@ public class Homework4Application {
    public void createStudentEntity() {
       LOGGER.fine("Creating Student object");
 
-      Student graceHopper = new Student();
-      graceHopper.setFirstName("Grace");
-      graceHopper.setLastName("Hopper");
-      graceHopper.setGpa(4.0);
+      List<Student> students = new ArrayList<>();
+      Student student = new Student();
+      student.setFirstName("Grace");
+      student.setLastName("Hopper");
+      student.setGpa(4);
 
-      LOGGER.fine("Persisting Student object to DB");
-      this.entityManager.persist(graceHopper);
+      students.add(student);
+
+      student = new Student();
+      student.setFirstName("Steve");
+      student.setLastName("Wozniak");
+      student.setGpa(3.9);
+
+      students.add(student);
+
+      this.entityManager.persist(student);
+      LOGGER.info("Persisted to DB: " + student);
+      LOGGER.info("Transient object: " + students.get(0));
+
+      // Need to flush changes to DB to update the in-memory object with its auto-generated id
+      this.entityManager.flush();
+      LOGGER.info("Persisted object after flush (non-null id): " + student);
    }
 
 }

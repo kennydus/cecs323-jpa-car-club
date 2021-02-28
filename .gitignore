@@ -79,3 +79,6 @@ pom.xml.tag
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# cecs323 derby database
+database/

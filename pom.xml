@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>csulb.cecs323</groupId>
 	<artifactId>cecs323-jpa-dbapp</artifactId>
 	<version>1.0</version>
@@ -14,13 +15,6 @@
 		<junit.jupiter.version>5.6.2</junit.jupiter.version>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>EclipseLink Repo</id>
-			<url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>
-			<name>EclipseLink Repo</name>
-		</repository>
-	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.derby</groupId>
@@ -28,10 +22,17 @@
 			<version>10.14.2.0</version> <!-- 10.15.2.0 does not work, not clear why-->
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.23</version>
+		</dependency>
+
 		<dependency> <!-- EclipseLink is the JPA provider -->
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>org.eclipse.persistence.jpa</artifactId>
-			<version>2.7.6</version>
+			<version>2.7.8</version>
 		</dependency>
 
 		<dependency>
@@ -52,15 +53,16 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<version>3.8.1</version>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.1.2</version>
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>csulb.cecs323.app.DemoApp</mainClass>
+							<mainClass>csulb.cecs323.app.StarterApplication</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

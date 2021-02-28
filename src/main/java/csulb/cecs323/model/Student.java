@@ -12,10 +12,7 @@
 
 package csulb.cecs323.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Student class to model basic information about students, just their name and GPA.
@@ -28,10 +25,14 @@ public class Student {
    private
    Long id;
 
+   @Column(name = "first_name", nullable = false)
    private String firstName;
+   @Column(nullable = false)
    private String lastName;
    private double gpa;
+   private String email;
 
+   // You must follow Java naming convention for accessors/mutators
 
    public Long getId() {
       return id;
@@ -63,5 +64,17 @@ public class Student {
 
    public void setGpa(double gpa) {
       this.gpa = gpa;
+   }
+
+   public String getEmail() {
+      return email;
+   }
+
+   public void setEmail(String email) {
+      this.email = email;
+   }
+
+   public String toString() {
+      return String.format("Student[id=%d, %s %s, %s, %.2f]", id, firstName, lastName, email, gpa);
    }
 }
