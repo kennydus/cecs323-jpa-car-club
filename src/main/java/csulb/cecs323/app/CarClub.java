@@ -80,8 +80,30 @@ public class CarClub {
       owners.add(new Owners("Reese", "Mike", "714-892-5544"));
       owners.add(new Owners("Leck", "Carl", "714-321-3729"));
       owners.add(new Owners("Guitierez", "Luis", "562-982-2899"));
+      owners.add(new Owners("Dylan", "Huynh", "714-517-9581"));
+      owners.add(new Owners("Kenny", "Du", "657-517-9264"));
       // Create the list of owners in the database.
       carclub.createEntity (owners);
+
+      // List of cars to persist.
+      List <Cars> cars = new ArrayList<Cars>();
+      // Load up the cars List with Entities that we are persisting
+      cars.add(new Cars("JH4DA9481PS021682", "Acura", "Integra", 1993, owners.get(0), carclub.getStyle("coupe")));
+      cars.add(new Cars("WVGBV7AX6CW559712", "Volkswagen", "Tiguan", 2012, owners.get(0), carclub.getStyle("sport-utility vehicle")));
+      cars.add(new Cars("1G1ND52J8X6272941", "Chevrolet", "Malibu", 1999, owners.get(1), carclub.getStyle("sedan")));
+      cars.add(new Cars("WP1AB29P88LA47599", "Porsche", "Cayenne", 2008, owners.get(1), carclub.getStyle("sport-utility vehicle")));
+      cars.add(new Cars("ZA9RU31B9XLA12338", "Lamborghini", "Diablo", 1999, owners.get(2), carclub.getStyle("sports car")));
+      cars.add(new Cars("3GCRKSE34AG162050", "Chevrolet", "Silverado 1500", 2010, owners.get(2), carclub.getStyle("pickup truck")));
+      cars.add(new Cars("JN1AZ4EH8CM565273", "Nissan", "370z", 2012, owners.get(2), carclub.getStyle("sports car")));
+      cars.add(new Cars("JH4DA1850KS002731", "Acura", "Integra", 1989, owners.get(3), carclub.getStyle("coupe")));
+      cars.add(new Cars("JN8AZ1MU7AW004224", "Nissan", "Murano", 2010, owners.get(3), carclub.getStyle("sport-utility vehicle")));
+      cars.add(new Cars("1FTEF17W4VNC92444", "Ford", "F150", 1997, owners.get(3), carclub.getStyle("pickup truck")));
+      cars.add(new Cars("WP0CA29924S650563", "Porsche", "911", 2004, owners.get(4), carclub.getStyle("sports car")));
+      cars.add(new Cars("JF1GF4350XH802545", "Subaru", "Impreza", 1999, owners.get(4), carclub.getStyle("sedan")));
+      cars.add(new Cars("WUADUAFG0EN000853", "Audi", "R8", 2014, owners.get(4), carclub.getStyle("sports car")));
+      // Create the list of cars in the database.
+      carclub.createEntity (cars);
+
 
       // Commit the changes so that the new data persists and is visible to other users.
       tx.commit();

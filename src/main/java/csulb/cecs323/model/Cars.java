@@ -33,23 +33,25 @@ public class Cars {
 
     /** The year that the vehicle was manufactured.  For now, do not worry about validating this #. */
     @Column(length = 4, nullable = false)
-    private int year;
+    private int model_year;
 
 
     public Cars() {
     }
 
-    public Cars(String VIN, String manufacturer, String model, int year){
+    public Cars(String VIN, String manufacturer, String model, int year, Owners owner, auto_body_styles auto_body_style){
         this.VIN = VIN;
         this.manufacturer = manufacturer;
         this.model = model;
-        this.year = year;
+        this.model_year = year;
+        this.owner = owner;
+        this.auto_body_style = auto_body_style;
     }
 
 
     @Override
     public String toString () {
         return "Cars - VIN: " + this.VIN + " Manufacturer: " + this.manufacturer +
-                " Model: " + this.model + " year: " + this.year;
+                " Model: " + this.model + " year: " + this.model_year;
     }
 }
